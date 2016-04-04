@@ -1,3 +1,4 @@
+
 function [ SURFData ] = getSURF_surf( I,step)
 thisIm=rgb2gray(I);
 %thisIm=thisIm(:,:,3);
@@ -19,5 +20,6 @@ end
 SURFData = features1(:)';
 %imshow(I);hold on;
 %plot(points);
+
 end
 
