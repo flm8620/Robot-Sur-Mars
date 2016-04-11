@@ -14,16 +14,17 @@ SURFFeatures = zeros(1, featureLengthSURF);     % pre-allocating memory for matr
 
 
 % --------------------------- SURF --------------------------------
-try
+
     points = detectSURFFeatures(thisIm,'MetricThreshold',50);
     filteredPoints=filterFeaturesGreenPoint(I,points);
     [features, valid_points] = extractFeatures(thisIm, filteredPoints);
     strongestFeatures = features(1:numSURFfeatures, :);
-    allSURFFeatures(1, :) = reshape(strongestFeatures, 1, featureLengthSURF);
-catch
-    ss=size(features);
-    ['only ' num2str(ss(1)) 'features!']
-end
+    sizefeat = size(features)
+    if (sizefeat(1) < numSURFfeature)
+        allSURFFeatures(1, :) = reshape(strongestFeatures, 1, featureLengthSURF);
+    else
+        ['only ' num2str(sizefeat(1)) 'features!']
+    end
 
 SURFData = array2table(allSURFFeatures);
 %theClass=robotClassifier.predictFcn(SURFData);
