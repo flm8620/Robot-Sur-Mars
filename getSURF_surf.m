@@ -32,6 +32,7 @@ SURFFeatures = zeros(1, featureLengthSURF);     % pre-allocating memory for matr
         %plot(valid_points.selectStrongest(10*numSURFfeatures));
         %hold off;
     SURFData(1, :) = features(:)';
+    SURFData = SURFData(1,1:100);
     %else
         %['only ' num2str(sizefeat(1)) 'features!']
     %end
