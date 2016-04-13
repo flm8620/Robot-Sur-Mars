@@ -17,7 +17,7 @@ featureLengthSURF = numSURFfeatures * SURFsize; % length of vectorised SURF feat
 featureThreshold = 10;
 
 % debug option
-showFeatures = true;
+showFeatures = false;
 fprintf('If you dont want to show images, set showFeatures = false\n');
 
 % other parameters, memory pre-allocation

@@ -1,43 +1,25 @@
-function [ SURFData ] = getSURF_surf( I )
-thisIm=rgb2hsv(I);
-thisIm=thisIm(:,:,3);
 
+function [ SURFData ] = getSURF_surf( I,step)
+thisIm=rgb2gray(I);
+%thisIm=thisIm(:,:,3);
+step=16;
 % SURF parameters
-numSURFfeatures = 14;   % keep the strongest SURF features
 SURFsize = 64;          % default feature length. I added this here so that I could pre-allocate some memory for other variables.
-featureLengthSURF = numSURFfeatures * SURFsize; % length of vectorised SURF feature
-
-
-% other parameters, memory pre-allocation
-
-SURFFeatures = zeros(1, featureLengthSURF);     % pre-allocating memory for matrix containing all the SURF features
-
 
 % --------------------------- SURF --------------------------------
-    thisImSize = size(thisIm);
-    [X,Y] = meshgrid(4:16:thisImSize(1),4:16:thisImSize(2));
-    sizex = size(X);
-    sizey = size(Y);
-    points = SURFPoints([reshape(Y,sizey(1)*sizey(2),1) reshape(X,sizex(1)*sizex(2),1)]);
-    %points = detectSURFFeatures(thisIm,'MetricThreshold',50);
-    %filteredPoints=filterFeaturesGreenPoint(I,points);
-    filteredPoints = points;
-    [features, valid_points] = extractFeatures(thisIm, filteredPoints);
-    %sizefeat = size(features);
-    %if (sizefeat(1) < numSURFfeatures)
-        %strongestFeatures = features.selectStrongest(numSURFfeatures);
-        %strongestFeatures = features(1:sizey(1)*numSURFfeatures,:);
-        %imshow(thisIm);hold on;
-        %plot(points)
-        %plot(valid_points.selectStrongest(10*numSURFfeatures));
-        %hold off;
-    SURFData(1, :) = features(:)';
-    SURFData = SURFData(1,1:100);
-    %else
-        %['only ' num2str(sizefeat(1)) 'features!']
-    %end
+thisImSize = size(thisIm);
+[X,Y] = meshgrid(step/2+0.5:step:thisImSize(1),step/2+0.5:step:thisImSize(2));
+points = SURFPoints([Y(:),X(:)]);
+if mod(step,2)==0
+    step=step-1;
+end
+[features1, ~] = extractFeatures(thisIm(:,:), points,'Method','Block','BlockSize',step);
+%[features2, ~] = extractFeatures(thisIm(:,:,2), points,'Method','Block','BlockSize',step);
+%[features3, ~] = extractFeatures(thisIm(:,:,3), points,'Method','Block','BlockSize',step);
+%SURFData = [features1(:)',features2(:)',features3(:)'];
+SURFData = features1(:)';
+%imshow(I);hold on;
+%plot(points);
 
-%SURFData = array2table(allSURFFeatures);
-%theClass=robotClassifier.predictFcn(SURFData);
 end
 

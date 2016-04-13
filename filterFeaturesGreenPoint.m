@@ -2,7 +2,7 @@ function [ filteredPoints, left,right,top,bottom,regionImage ] = filterFeaturesG
 
 % get rectagle from green point
 [region,region2,regionImage] = largestGreenRegion(image);
-rectangleSize=150;
+rectangleSize=160;
 translation = [0,-20]; %move up 20 pixel
 x=0;y=0;
 if size(region2,1)==0 && size(region2,2)==0

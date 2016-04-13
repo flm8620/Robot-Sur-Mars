@@ -1,6 +1,15 @@
 function [ largestRegion, secondLargestRegion, regionImage ] = largestGreenRegion( image )
 mask = createMask5(image);
 stat = regionprops(mask,'Area','Image','BoundingBox','Centroid');
+
+if isempty(stat) 
+    largestRegion=[];
+    secondLargestRegion=[];
+    regionImage=[];
+    return;
+end
+
+
 maxArea=0;
 largestRegion=[];
 boundingBox=[];
