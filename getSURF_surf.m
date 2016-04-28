@@ -22,7 +22,7 @@ SURFData = features1(:)';
 %plot(points);
 SURFData = SURFData*coeff;
 sizeSURFData = size(SURFData);
-SURFData = SURFData - ones(sizeSURFData(2),1)*mean(SURFdData) ;
+SURFData = SURFData - ones(sizeSURFData(2),1)*mean(SURFData) ;
 
 end
 
