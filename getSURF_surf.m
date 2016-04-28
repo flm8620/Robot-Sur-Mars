@@ -1,5 +1,5 @@
 
-function [ SURFData ] = getSURF_surf( I,step)
+function [ SURFData ] = getSURF_surf( I,step,coeff)
 thisIm=rgb2gray(I);
 %thisIm=thisIm(:,:,3);
 step=16;
@@ -20,6 +20,9 @@ end
 SURFData = features1(:)';
 %imshow(I);hold on;
 %plot(points);
+SURFData = SURFData*coeff;
+sizeSURFData = size(SURFData);
+SURFData = SURFData - ones(sizeSURFData(2),1)*mean(SURFdData) ;
 
 end
 
