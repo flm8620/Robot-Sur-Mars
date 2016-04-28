@@ -52,6 +52,7 @@ end
 %SURFData.objectType = getImageLabels(imset);
 %save SURFData SURFData  % save this here for classification with the *Classification Learner App* later
 labels=labels';
-[coeff,score] = pca(allSURFFeatures);
-allSURFFeatures = score;
-save SURFDataNN allSURFFeatures labels coeff % save this here for classification with the *Neural Networks Toolbox* later
+[coeff,score_allSURFFeatures] = pca(allSURFFeatures);
+%save SURFDataNN allSURFFeatures labels  % save this here for classification with the *Neural Networks Toolbox* later
+save SURFDataNN coeff score_allSURFFeatures labels  % save this here for classification with the *Neural Networks Toolbox* later
+
