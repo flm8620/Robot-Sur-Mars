@@ -1,0 +1,9 @@
+thisImRGB = Cream2;
+cutSize = 160;
+sizeBlock = 16;
+imageCut = cutImageGreenPoint(thisImRGB,cutSize);
+features = getSURF_surf(imageCut,sizeBlock);
+coeff = load('coeff_save.mat');
+coeff= coeff.coeff;
+a=mtimes(double(features),double(coeff));
+yball = a - repmat(mean(a),[size(a,1),1]);
