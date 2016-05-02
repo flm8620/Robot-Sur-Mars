@@ -8,14 +8,14 @@ im1 = im1.read(1);
 simin = zeros(sizex,sizey,sizez,totalNumIm);
 simin = uint8(simin);
 labels = zeros(numObj, totalNumIm);  
-labelsValue = [' ';' ';' ';' ';' ';' ';' '];
+%labelsValue = [' ';' ';' ';' ';' ';' ';' '];
 countValidImage = 0;
 count = 0;
 for no = 1:numObj
     numIm = imset(no).Count; % number of images for this object
     start = count+1; % for creating the label
          % images may be refused when it has not enough features
-    labelsValue(no) = imset(no).Description;
+    %labelsValue(no) = imset(no).Description;
     for ni = 1:numIm
         count = count + 1;
         thisImRGB = imset(no).read(ni);
