@@ -1,6 +1,6 @@
 
 function [ SURFData ] = getSURF_surf( I,step)
-%thisIm=thisIm(:,:,3);
+thisIm=I(:,:,1);
 step=16;
 % SURF parameters
 SURFsize = 64;          % default feature length. I added this here so that I could pre-allocate some memory for other variables.
