@@ -1,7 +1,10 @@
 imset = imageSet('.\MarsObjects','recursive');
 numObj = numel(imset);              % number of different objects
 numImEachObj = [imset.Count];       % number of images for each object
-totalNumIm = sum([imset.Count]); 
+step=3;
+listStep = 1:step:imset(1).Count;
+%totalNumIm = sum([imset.Count]); 
+totalNumIm = size(listStep,1) * numObj;
 im1 = imset(1);
 im1 = im1.read(1);
 [sizex,sizey,sizez] = size(im1);
@@ -16,7 +19,8 @@ for no = 1:numObj
     start = count+1; % for creating the label
          % images may be refused when it has not enough features
     %labelsValue(no) = imset(no).Description;
-    for ni = 1:numIm
+    %for ni = 1:numIm
+    for ni = 1:3:numIm
         count = count + 1;
         thisImRGB = imset(no).read(ni);
         
