@@ -1,5 +1,5 @@
 vidLow=videoinput('winvideo',1,'MJPG_320x240')
-N=10;
+N=150;
 for i=1:N
     'Low: '
     tic
@@ -7,7 +7,6 @@ for i=1:N
     toc
     beep
     fprintf('Number of image: %d/%d',i,N);  
-    imwrite(imgLow,['.\BiggerObjectPredict\Glue\Glue',num2str(i) '.png'])
+    imwrite(imgLow,['.\MarsObjects\Ball\Ball',num2str(i) '.png'])
     toc
-    pause(1.2)
 end
