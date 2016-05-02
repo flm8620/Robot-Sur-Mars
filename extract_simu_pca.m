@@ -1,4 +1,5 @@
-extract_simu = zeros(22500,350);
+
+extract_simu = zeros(size(simout,2),size(simout,3));
 extract_simu(:,:) = simout(1,:,:);
 
 labels=labels';
