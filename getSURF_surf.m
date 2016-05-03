@@ -12,6 +12,7 @@ points = SURFPoints([Y(:),X(:)]);
 if mod(step,2)==0
     step=step-1;
 end
+
 [features1, ~] = extractFeatures(thisIm(:,:), points,'Method','Block','BlockSize',step);
 %[features2, ~] = extractFeatures(thisIm(:,:,2), points,'Method','Block','BlockSize',step);
 %[features3, ~] = extractFeatures(thisIm(:,:,3), points,'Method','Block','BlockSize',step);

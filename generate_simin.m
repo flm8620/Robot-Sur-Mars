@@ -2,7 +2,7 @@ imset = imageSet('.\MarsObjects','recursive');
 numObj = numel(imset);              % number of different objects
 numImEachObj = [imset.Count];       % number of images for each object
 step=3;
-listStep = 1:step:imset(1).Count;
+listStep = 2:step:imset(1).Count;
 %totalNumIm = sum([imset.Count]); 
 totalNumIm = size(listStep,1) * numObj;
 im1 = imset(1);
@@ -20,7 +20,7 @@ for no = 1:numObj
          % images may be refused when it has not enough features
     %labelsValue(no) = imset(no).Description;
     %for ni = 1:numIm
-    for ni = 1:3:numIm
+    for ni = 2:3:numIm
         count = count + 1;
         thisImRGB = imset(no).read(ni);
         
